@@ -1,0 +1,62 @@
+# 문제
+
+[Find the Pivot Integer](https://leetcode.com/problems/find-the-pivot-integer/)
+
+# 생각해보기
+
+인수로 받은 n을 pivot integer로 가정하여, 1부터 n까지의 합과 pivot integer부터 n까지의 합이 같으면 n을 반환하고, 아니면 -1을 리턴한다.
+
+# 해결방법
+
+위의 방법으로 해결하였다. 하지만 효율은 좋지 못했다.
+
+# 코드
+
+```
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var pivotInteger = function (n) {
+    let pi = n;
+    let sum1 = 0;
+    let sum2 = 0;
+
+    while (pi > 0) {
+        for (let i = 1; i <= pi; i++) {
+            sum1 += i;
+        }
+
+        for (let i = pi; i <= n; i++) {
+            sum2 += i;
+        }
+
+        if(sum1 === sum2) return pi;
+        pi--;
+        sum1 = 0;
+        sum2 = 0;
+    }
+
+
+    return -1;
+};
+```
+
+# 다른 풀이
+
+제곱근을 이용한 풀이
+```
+var pivotInteger = function(n) {
+    let x = Math.sqrt(n * (n + 1) / 2);
+    
+    // x가 정수인지 아닌지를 체크. 나머지가 0인 경우 x는 정수가 아니라는 의미
+    if (x % 1 !== 0) {
+        return -1;
+    } else {
+        return Math.floor(x);
+    }
+};
+```
+
+# 참고
+
