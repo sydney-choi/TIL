@@ -42,3 +42,7 @@ c노드를 기준으로 봤을 때, d와 e는 이웃 노드라고 할 수 있다
 여기서 key는 노드의 data를 말하고, value는 a의 이웃 노드들을 가리킨다.
 
 이웃 노드들이 없을 경우, 빈 배열로 나타낸다.
+
+출처
+
+[Graph Algorithms for Technical Interviews](https://www.youtube.com/watch?v=tWVWeAqZ0WU&t=143s)
