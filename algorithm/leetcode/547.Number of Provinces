@@ -1,0 +1,51 @@
+# 문제
+
+[Number of Provinces](https://leetcode.com/problems/number-of-provinces/)
+
+# 생각해보기
+
+프로그래머스의 네트워크 문제랑 거의 흡사해서 그 풀이대로 풀었다.
+
+노드의 방문여부를 검사할 수 있도록 노드의 개수만큼의 배열을 선언한다.
+
+isConnected를 순회하며 해당 노드가 방문한적이 있는지 확인하고, 방문한 적이 없으면 dfs를 이용해 이웃노드를 탐색한다.
+
+이 때, 위의 조건문으로 중복된 노드는 탐색하지 않는 것이 걸러지므로, 카운트를 1 올려준다.
+
+# 코드
+
+```
+/**
+ * @param {number[][]} isConnected
+ * @return {number}
+ */
+var findCircleNum = function(isConnected) {
+    const visited = new Array(isConnected.length).fill(false);
+    let answer = 0;
+    for (let i = 0; i < isConnected.length; i++) {
+        if(!visited[i]) {
+            dfs(i, visited, isConnected);
+            answer += 1;
+        }
+    }
+
+    return answer;
+}
+
+const dfs = (current, visited, isConnected) => {
+    // 방문 처리
+    visited[current] = true;
+    for(let i = 0; i < isConnected.length; i++) {
+        if((isConnected[current][i] === 1) && !visited[i]) {
+            dfs(i, visited, isConnected);
+        }
+    }
+
+}
+```
+
+# 다른 풀이
+
+
+# 참고
+
